@@ -23,34 +23,19 @@
         function setup() {
             createCanvas(windowWidth, windowHeight);
             textFont(alliance);
-            textSize(150);
-            textAlign(LEFT, TOP);
-            frameRate(15)
+            noCursor();
 
-            for (let i = 0; i < windowWidth; i+=2) {
-                fill('blue')
-                ellipse(50,50,50,50);
-                let x = windowHeight - i;
-                let y = i % 2;
-                fill('black')
-                stroke(255);
-                // point(x * 10, 50 + y * 10);
-                // point(x * 10, 70 + y * 10);
-                // point(x * 10, 90 + y * 10);
-                line(random(windowWidth), random(windowWidth), random(windowHeight), random(windowHeight));
-            };
-
-            for (let i = windowWidth - 500; i > 0; i = i - 4) {
-                stroke(255);
-                ellipse(i, 50, i, i);
-            }
+            colorMode(HSB, 360, 100, 100);
+            rectMode(CENTER);
+            noStroke();
         }
 
         function draw() {
-            stroke(255);
-            console.log(millis())
-            rotate(Math.sin(millis()));
-            text('Duck!', 150, 150);
+            let halfY = windowHeight / 2;
+            let halfX = windowWidth / 2;
+            background(mouseY / 2, 100, 100)
+            fill(360 - mouseY / 2, 100, 100)
+            rect(halfX, halfY, mouseX + 1, mouseX + 1)
         }
     </script>
 </body>
