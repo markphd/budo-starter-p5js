@@ -1,48 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>my-module</title>
     <link href='http://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="style.css">
+    <style>
+        body { background-color: blue; }
+    </style>
 </head>
-<body>
-    
-    <h1>Grrate success!</h1>
 
+<body>
     <script src="p5.min.js"></script>
     <script src="bundle.js"></script>
 
     <script type="text/javascript">
+        function preload() {
+            alliance = loadFont('assets/black/Alliance No.1 Black.otf');
+        }
+
         function setup() {
+            createCanvas(windowWidth, windowHeight);
+            textFont(alliance);
+            textSize(150);
+            textAlign(LEFT, TOP);
+            frameRate(15)
 
-          // Sets the screen to be 720 pixels wide and 400 pixels high
-          createCanvas(720, 400);
-          background(0);
-          noStroke();
+            for (let i = 0; i < windowWidth; i+=2) {
+                fill('blue')
+                ellipse(50,50,50,50);
+                let x = windowHeight - i;
+                let y = i % 2;
+                fill('black')
+                stroke(255);
+                // point(x * 10, 50 + y * 10);
+                // point(x * 10, 70 + y * 10);
+                // point(x * 10, 90 + y * 10);
+                line(random(windowWidth), random(windowWidth), random(windowHeight), random(windowHeight));
+            };
 
-          fill(204);
-          triangle(18, 18, 18, 360, 81, 360);
-
-          fill(102);
-          rect(81, 81, 63, 63);
-
-          fill(204);
-          quad(189, 18, 216, 18, 216, 360, 144, 360);
-
-          fill(255);
-          ellipse(252, 144, 72, 72);
-
-          fill(204);
-          triangle(288, 18, 351, 360, 288, 360); 
-
-          fill(255);
-          arc(479, 300, 280, 280, PI, TWO_PI);
+            for (let i = windowWidth - 500; i > 0; i = i - 4) {
+                stroke(255);
+                ellipse(i, 50, i, i);
+            }
         }
 
         function draw() {
-          
+            stroke(255);
+            console.log(millis())
+            rotate(Math.sin(millis()));
+            text('Duck!', 150, 150);
         }
     </script>
 </body>
+
 </html>
