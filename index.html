@@ -25,26 +25,25 @@
             createCanvas(windowWidth, windowHeight);
             textFont(alliance);
             colorMode(HSB, 360, width, height);
+            background(255)
         }
 
         function draw() {
-            beginShape(TRIANGLE_FAN)
-            vertex(width / 2, height / 2)
-
-            const angleStep = 360 / 24
-
-            for(let angle=0; angle<=360; angle+=angleStep){
-                let vy = width / 2 + cos(radians(angle)) * 360
-                let vx = height / 2 + sin(radians(angle)) * 360
-                vertex(vx, vy)
-                fill(angle, mouseX, mouseY)
+            for(let i=0; i<30; i++){
+                push();
+                noFill();
+                translate(50,50);
+                scale(1/(i%30),1/(i%30));
+                rotate(radians(i*mouseY));
+                rect(0,0,width/2,height/2);
+                rectMode(CENTER);
+                pop();
             }
-            
-            endShape()
 
             textSize(64)
             fill("#ffffff")
             text("Color spectrum in circle", 100, 100)
+            smooth();
         }
     </script>
 </body>
