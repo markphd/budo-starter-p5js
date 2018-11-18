@@ -7,7 +7,8 @@
     <link href='http://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="style.css">
     <style>
-        body { background-color: blue; }
+        body { background-color: blue; padding: 0; margin: 0; }
+        canvas { margin: 0; padding: 0;}
     </style>
 </head>
 
@@ -24,21 +25,16 @@
             createCanvas(windowWidth, windowHeight);
             textFont(alliance);
             colorMode(HSB, width, height, 100);
-            noStroke();
         }
 
         function draw() {
-            let stepY = mouseY + 2;
-            let stepX = mouseX + 2;
-            
-            for(let gridY=0; gridY < height; gridY += stepY){
-                for(let gridX=0; gridX < width; gridX += stepX){
-                    fill(gridX, height - gridY, 100)
-                    rect(gridX, gridY, stepX, stepY)
-                }
+            for(let i=0; i<windowWidth; i++){
+                stroke(0)
+                line(mouseX,0,mouseX,height / 2);
             }
             textSize(64)
-            text("Color Spectrum in Grid", 100, 100)
+            fill(360)
+            text("Lines", 100, 100)
         }
     </script>
 </body>
